@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>baidu</title>
+    <link rel="stylesheet" href="zindex.css" />
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <link rel="stylesheet" href="dist/MarkerCluster.css">
+    <link rel="stylesheet" href="dist/MarkerCluster.Default.css">
+</head>
+<body>
+
+<div style="width:50%; height:100%" id="map"></div>
+
+<script src="http://map.qq.com/api/js?v=2.exp"></script>
+<script src="leaflet/leaflet.js"></script>
+<script src="leaflet-google.js"></script>
+<script src="leaflet-qq.js"></script>
+<script src="jquery.js"></script>
+<script src="dist/leaflet.markercluster-src.js"></script>
+<script type='text/javascript'>
+
+    $(function() {
+        var p1 = L.marker([25.053813, 102.705064]),
+                p2 = L.marker([25.053813, 102.715064]);
+
+        var markers = L.markerClusterGroup();
+        markers.addLayer(p1);
+        markers.addLayer(p2);
+
+        var googleLayer = new L.Google();
+        var qqLayer = new L.QQ();
+
+        var map = L.map('map', {
+            center: [25.053813, 102.705064],
+            zoom: 15,
+            layers: [qqLayer, markers]
+        });
+        var baseMaps = {
+            "QQ": qqLayer,
+            "Google": googleLayer
+        };
+
+        var overlayMaps = {
+            "Marks": markers
+        };
+        L.control.layers(baseMaps, overlayMaps).addTo(map);
+    });
+</script>
+</body>
+</html>
