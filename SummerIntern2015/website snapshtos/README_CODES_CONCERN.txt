@@ -1,0 +1,1 @@
+Due to patent issue, the website database and codes can not be shared in public. Please contact me for more information and snippets of codes. 
